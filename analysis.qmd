@@ -2,5 +2,170 @@
 title: "NBA and FIFA"
 author: Collin Gates
 format: html
+execute:
+    echo: false
 ---
 
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(arrow)
+  library(plotly)
+  library(viridis)
+  library(scales)
+})
+```
+
+
+```{r}
+#| cache: true
+nba_clean <- open_dataset("data/game.parquet") |>
+  collect() |>
+  left_join(
+    open_dataset("data/line_score.parquet") |> collect(),
+    by = "game_id",
+    relationship = "many-to-many"
+  ) |>
+  mutate(
+    game_date = ymd_hms(game_date),
+    game_date_est = ymd_hms(game_date_est)
+  ) |>
+  drop_na(pts_home.x)|>
+    mutate(
+    game_date = as_datetime(game_date),
+    game_year = year(game_date),
+    season_label = paste0(season_id %/% 10000, "-", str_sub(season_id + 1, 3, 4))
+  ) %>%
+  filter(!is.na(game_date), game_year >= 1946) %>%
+    mutate(
+    wl_home = factor(wl_home, levels = c("W", "L")),
+    game_era = case_when(
+      game_year <= 1979 ~ "Pre-Three Point",
+      game_year <= 1999 ~ "Modern Era", 
+      game_year <= 2019 ~ "Analytics Era",
+      TRUE ~ "Current Era"
+    ),
+    game_era = factor(game_era, levels = c("Pre-Three Point", "Modern Era", "Analytics Era", "Current Era"))
+  ) |>  
+    mutate(
+        across(contains("pct"), ~replace_na(.x, 0)),
+        across(c(pts_home.x, pts_away.x), ~replace_na(.x, 0)),
+        total_points = pts_home.x + pts_away.x
+     ) %>%
+     filter(total_points > 0, !is.na(pts_home.x), !is.na(pts_away.x))|>
+  group_by(game_year, game_era, season_label) %>%
+  summarise(
+    avg_points = mean(total_points, na.rm = TRUE),
+    games_count = n(),
+    home_win_pct = mean(wl_home == "W", na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(game_year)
+```
+
+
+```{r}
+library(ggplot2)
+library(viridis)
+library(plotly)
+
+# Ensure all ggplot layers are connected by + 
+# The pipe |> should only appear at the very end of the ggplot object
+(ggplot(nba_clean, aes(x = game_year, y = avg_points, color = game_era)) +
+  geom_line(alpha = 0.6) +
+  geom_point(aes(size = games_count), alpha = 0.8) +
+  scale_color_viridis(discrete = TRUE, option = "viridis") +
+  theme_minimal() +
+  labs(
+    title = "Evolution of NBA Scoring (1946–Present)",
+    subtitle = "Average total points per game categorized by historical eras",
+    caption = "Size of points indicates the total volume of games played that year",
+    x = "Year",
+    y = "Average Total Points"
+  )) |> 
+  ggplotly(tooltip = c("x", "y", "colour", "size"))
+```
+
+
+```{r}
+#| cache: true
+final_fifa <- "data/fifa.parquet" |>
+  open_dataset() |>
+  collect() |>
+  mutate(
+    height_cm = as.numeric(str_extract(Height, "\\d+")),
+    weight_kg = as.numeric(str_extract(Weight, "\\d+"))
+  ) |>
+  mutate(across(where(is.character), ~str_replace_all(.x, "\\n", ""))) |>
+  mutate(across(where(is.character), ~str_trim(.x))) |>
+  mutate(
+    joined_date = mdy(Joined),
+    years_at_club = as.numeric(today() - joined_date) / 365.25,
+    long_tenure = years_at_club > 10
+  ) |>
+  drop_na(joined_date) |>
+  mutate(
+    value_numeric = case_when(
+      is.na(Value) | Value == "" | Value == "0" ~ 0,
+      str_detect(Value, "M") ~ as.numeric(str_remove_all(Value, "[€M★-]")) * 1000000,
+      str_detect(Value, "K") ~ as.numeric(str_remove_all(Value, "[€K★-]")) * 1000,
+      str_detect(Value, "^€?[0-9.]+$") ~ as.numeric(str_remove_all(Value, "€")),
+      TRUE ~ 0
+    ),
+    wage_numeric = case_when(
+      is.na(Wage) | Wage == "" | Wage == "0" ~ 0,
+      str_detect(Wage, "K") ~ as.numeric(str_remove_all(Wage, "[€K★-]")) * 1000,
+      str_detect(Wage, "^€?[0-9.]+$") ~ as.numeric(str_remove_all(Wage, "€")),
+      TRUE ~ 0
+    ),
+    release_clause_numeric = case_when(
+      is.na(Release.Clause) | Release.Clause == "" | Release.Clause == "0" ~ 0,
+      str_detect(Release.Clause, "M") ~ as.numeric(str_remove_all(Release.Clause, "[€M★-]")) * 1000000,
+      str_detect(Release.Clause, "K") ~ as.numeric(str_remove_all(Release.Clause, "[€K★-]")) * 1000,
+      str_detect(Release.Clause, "^€?[0-9.]+$") ~ as.numeric(str_remove_all(Release.Clause, "€")),
+      TRUE ~ 0
+    )
+  )
+```
+
+
+```{r}
+library(ggplot2)
+library(scales)
+library(viridis)
+
+final_fifa |> 
+  # Filter for players with a valid market value and an Overall Rating > 60
+  filter(value_numeric > 0, X.OVA > 60) |> 
+  ggplot(aes(x = Age, y = X.OVA)) +
+  # Use geom_line to show general trends across ages
+  geom_line(stat = "summary", fun = "mean", color = "grey70", linetype = "dashed") +
+  # Plot bubbles with size and color reflecting market value
+  geom_point(aes(size = value_numeric, color = value_numeric), alpha = 0.7) +
+  # Format the legend for millions of Euros
+  scale_size_continuous(
+    labels = label_currency(prefix = "€", suffix = "M", scale = 1e-6),
+    name = "Market Value"
+  ) +
+  # Apply the 'plasma' color palette
+  scale_color_viridis_c(
+    option = "plasma",
+    labels = label_currency(prefix = "€", suffix = "M", scale = 1e-6),
+    name = "Market Value"
+  ) +
+  labs(
+    title = "The Golden Window: Player Rating & Value by Age",
+    subtitle = "Market value peaks as players reach their late 20s, correlated with high OVA ratings",
+    caption = "Data source: FIFA Dataset | Values > €0 & OVA > 60",
+    x = "Age (Years)",
+    y = "Overall Rating (OVA)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(color = "grey30", margin = margin(b = 10)),
+    legend.position = "right",
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+```

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Collin Gates">
+
+<title>NBA and FIFA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="analysis_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="analysis_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="analysis_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="analysis_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="analysis_files/libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="analysis_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="analysis_files/libs/plotly-binding-4.11.0/plotly.js"></script>
+
+<script src="analysis_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="analysis_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="analysis_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="analysis_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<link href="analysis_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="analysis_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">NBA and FIFA</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Collin Gates </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-52d74a381054e20f8245" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-52d74a381054e20f8245">{"x":{"data":[{"x":[1946,1947,1947,1948,1948,1949,1949,1949,1950,1950,1951,1951,1951,1952,1952,1952,1953,1953,1953,1954,1954,1954,1955,1955,1955,1956,1956,1956,1957,1957,1957,1958,1958,1959,1959,1959,1960,1960,1960,1961,1962,1962,1962,1963,1963,1963,1964,1964,1964,1965,1965,1966,1966,1966,1967,1967,1967,1968,1968,1968,1969,1969,1969,1970,1970,1970,1971,1971,1971,1972,1972,1972,1973,1973,1973,1974,1974,1974,1975,1975,1975,1976,1976,1977,1977,1977,1978,1978,1978,1979,1979,1979,1979],"y":[129.5078125,140.65579710144928,141.21052631578948,152.3097014925373,144.28571428571428,161.70422535211267,159.42561983471074,157.44999999999999,161.5553235908142,161.23333333333332,167.62686567164178,205,167,169.58579881656806,199,172.24000000000001,160.91691394658753,154,163.17391304347825,169.0268456375839,191,162,190.11929824561403,191,194.95238095238096,197.90819672131147,202,199.85714285714286,207.18181818181819,206,219,211.65853658536585,248,221.46913580246914,225.66666666666666,232,234.75757575757575,240,218.12,284,230.15757575757576,280,225.17241379310346,226.32478632478632,223,230.89655172413794,222.37669376693768,218,211.66666666666666,225.1927374301676,247,231.61421319796955,231,227.25925925925927,231.65517241379311,255,231.61290322580646,229.56439393939394,268,224.05000000000001,224.59150326797385,231.17216117216117,235,235.40531561461793,277,223.19999999999999,217.91999999999999,215,207.02500000000001,217.93804034582132,222,213.70270270270271,214.75817923186344,188,205,207.73235294117646,257,196.26829268292684,206.47775175644028,210,201,232,207.16,215.98659517426273,249,210.81132075471697,218.84848484848484,258,214.0392156862745,220.7869822485207,217.65573770491804,263,209.43396226415095],"text":["game_year: 1946<br />avg_points: 129.5078<br />game_era: Pre-Three Point","game_year: 1947<br />avg_points: 140.6558<br />game_era: Pre-Three Point","game_year: 1947<br />avg_points: 141.2105<br />game_era: Pre-Three Point","game_year: 1948<br />avg_points: 152.3097<br />game_era: Pre-Three Point","game_year: 1948<br />avg_points: 144.2857<br />game_era: Pre-Three Point","game_year: 1949<br />avg_points: 161.7042<br />game_era: Pre-Three Point","game_year: 1949<br />avg_points: 159.4256<br />game_era: Pre-Three Point","game_year: 1949<br />avg_points: 157.4500<br />game_era: Pre-Three Point","game_year: 1950<br />avg_points: 161.5553<br />game_era: Pre-Three Point","game_year: 1950<br />avg_points: 161.2333<br />game_era: Pre-Three Point","game_year: 1951<br />avg_points: 167.6269<br />game_era: Pre-Three Point","game_year: 1951<br />avg_points: 205.0000<br />game_era: Pre-Three Point","game_year: 1951<br />avg_points: 167.0000<br />game_era: Pre-Three Point","game_year: 1952<br />avg_points: 169.5858<br />game_era: Pre-Three Point","game_year: 1952<br />avg_points: 199.0000<br />game_era: Pre-Three Point","game_year: 1952<br />avg_points: 172.2400<br />game_era: Pre-Three Point","game_year: 1953<br />avg_points: 160.9169<br />game_era: Pre-Three Point","game_year: 1953<br />avg_points: 154.0000<br />game_era: Pre-Three Point","game_year: 1953<br />avg_points: 163.1739<br />game_era: Pre-Three Point","game_year: 1954<br />avg_points: 169.0268<br />game_era: Pre-Three Point","game_year: 1954<br />avg_points: 191.0000<br />game_era: Pre-Three Point","game_year: 1954<br />avg_points: 162.0000<br />game_era: Pre-Three Point","game_year: 1955<br />avg_points: 190.1193<br />game_era: Pre-Three Point","game_year: 1955<br />avg_points: 191.0000<br />game_era: Pre-Three Point","game_year: 1955<br />avg_points: 194.9524<br />game_era: Pre-Three Point","game_year: 1956<br />avg_points: 197.9082<br />game_era: Pre-Three Point","game_year: 1956<br />avg_points: 202.0000<br />game_era: Pre-Three Point","game_year: 1956<br />avg_points: 199.8571<br />game_era: Pre-Three Point","game_year: 1957<br />avg_points: 207.1818<br />game_era: Pre-Three Point","game_year: 1957<br />avg_points: 206.0000<br />game_era: Pre-Three Point","game_year: 1957<br />avg_points: 219.0000<br />game_era: Pre-Three Point","game_year: 1958<br />avg_points: 211.6585<br />game_era: Pre-Three Point","game_year: 1958<br />avg_points: 248.0000<br />game_era: Pre-Three Point","game_year: 1959<br />avg_points: 221.4691<br />game_era: Pre-Three Point","game_year: 1959<br />avg_points: 225.6667<br />game_era: Pre-Three Point","game_year: 1959<br />avg_points: 232.0000<br />game_era: Pre-Three Point","game_year: 1960<br />avg_points: 234.7576<br />game_era: Pre-Three Point","game_year: 1960<br />avg_points: 240.0000<br />game_era: Pre-Three Point","game_year: 1960<br />avg_points: 218.1200<br />game_era: Pre-Three Point","game_year: 1961<br />avg_points: 284.0000<br />game_era: Pre-Three Point","game_year: 1962<br />avg_points: 230.1576<br />game_era: Pre-Three Point","game_year: 1962<br />avg_points: 280.0000<br />game_era: Pre-Three Point","game_year: 1962<br />avg_points: 225.1724<br />game_era: Pre-Three Point","game_year: 1963<br />avg_points: 226.3248<br />game_era: Pre-Three Point","game_year: 1963<br />avg_points: 223.0000<br />game_era: Pre-Three Point","game_year: 1963<br />avg_points: 230.8966<br />game_era: Pre-Three Point","game_year: 1964<br />avg_points: 222.3767<br />game_era: Pre-Three Point","game_year: 1964<br />avg_points: 218.0000<br />game_era: Pre-Three Point","game_year: 1964<br />avg_points: 211.6667<br />game_era: Pre-Three Point","game_year: 1965<br />avg_points: 225.1927<br />game_era: Pre-Three Point","game_year: 1965<br />avg_points: 247.0000<br />game_era: Pre-Three Point","game_year: 1966<br />avg_points: 231.6142<br />game_era: Pre-Three Point","game_year: 1966<br />avg_points: 231.0000<br />game_era: Pre-Three Point","game_year: 1966<br />avg_points: 227.2593<br />game_era: Pre-Three Point","game_year: 1967<br />avg_points: 231.6552<br />game_era: Pre-Three Point","game_year: 1967<br />avg_points: 255.0000<br />game_era: Pre-Three Point","game_year: 1967<br />avg_points: 231.6129<br />game_era: Pre-Three Point","game_year: 1968<br />avg_points: 229.5644<br />game_era: Pre-Three Point","game_year: 1968<br />avg_points: 268.0000<br />game_era: Pre-Three Point","game_year: 1968<br />avg_points: 224.0500<br />game_era: Pre-Three Point","game_year: 1969<br />avg_points: 224.5915<br />game_era: Pre-Three Point","game_year: 1969<br />avg_points: 231.1722<br />game_era: Pre-Three Point","game_year: 1969<br />avg_points: 235.0000<br />game_era: Pre-Three Point","game_year: 1970<br />avg_points: 235.4053<br />game_era: Pre-Three Point","game_year: 1970<br />avg_points: 277.0000<br />game_era: Pre-Three Point","game_year: 1970<br />avg_points: 223.2000<br />game_era: Pre-Three Point","game_year: 1971<br />avg_points: 217.9200<br />game_era: Pre-Three Point","game_year: 1971<br />avg_points: 215.0000<br />game_era: Pre-Three Point","game_year: 1971<br />avg_points: 207.0250<br />game_era: Pre-Three Point","game_year: 1972<br />avg_points: 217.9380<br />game_era: Pre-Three Point","game_year: 1972<br />avg_points: 222.0000<br />game_era: Pre-Three Point","game_year: 1972<br />avg_points: 213.7027<br />game_era: Pre-Three Point","game_year: 1973<br />avg_points: 214.7582<br />game_era: Pre-Three Point","game_year: 1973<br />avg_points: 188.0000<br />game_era: Pre-Three Point","game_year: 1973<br />avg_points: 205.0000<br />game_era: Pre-Three Point","game_year: 1974<br />avg_points: 207.7324<br />game_era: Pre-Three Point","game_year: 1974<br />avg_points: 257.0000<br />game_era: Pre-Three Point","game_year: 1974<br />avg_points: 196.2683<br />game_era: Pre-Three Point","game_year: 1975<br />avg_points: 206.4778<br />game_era: Pre-Three Point","game_year: 1975<br />avg_points: 210.0000<br />game_era: Pre-Three Point","game_year: 1975<br />avg_points: 201.0000<br />game_era: Pre-Three Point","game_year: 1976<br />avg_points: 232.0000<br />game_era: Pre-Three Point","game_year: 1976<br />avg_points: 207.1600<br />game_era: Pre-Three Point","game_year: 1977<br />avg_points: 215.9866<br />game_era: Pre-Three Point","game_year: 1977<br />avg_points: 249.0000<br />game_era: Pre-Three Point","game_year: 1977<br />avg_points: 210.8113<br />game_era: Pre-Three Point","game_year: 1978<br />avg_points: 218.8485<br />game_era: Pre-Three Point","game_year: 1978<br />avg_points: 258.0000<br />game_era: Pre-Three Point","game_year: 1978<br />avg_points: 214.0392<br />game_era: Pre-Three Point","game_year: 1979<br />avg_points: 220.7870<br />game_era: Pre-Three Point","game_year: 1979<br />avg_points: 217.6557<br />game_era: Pre-Three Point","game_year: 1979<br />avg_points: 263.0000<br />game_era: Pre-Three Point","game_year: 1979<br />avg_points: 209.4340<br />game_era: Pre-Three Point"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,0.6)","dash":"solid"},"hoveron":"points","name":"Pre-Three Point","legendgroup":"Pre-Three Point","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1980,1980,1980,1981,1981,1981,1982,1982,1982,1983,1983,1983,1984,1984,1984,1985,1985,1985,1986,1986,1986,1987,1987,1987,1988,1988,1988,1989,1989,1989,1989,1990,1990,1990,1991,1991,1991,1992,1992,1992,1993,1993,1993,1994,1994,1995,1995,1995,1996,1996,1997,1997,1997,1998,1998,1998,1999,1999,1999],"y":[217.0561555075594,280,207.875,215.95636363636365,243,200.62264150943398,218.32288401253919,238,211.04255319148936,218.4936575052854,255,214.7906976744186,219.83840503672613,299,215.24050632911391,222.00950369588173,269,229.38235294117646,219.14489571899011,271,221.4264705882353,219.47252747252747,303,220.81690140845072,217.0589430894309,271,208.63749999999999,218.75620437956204,210.7192513368984,277,209.7258064516129,215.19496855345912,243,211.04166666666666,210.86200716845877,230,208.30882352941177,211.21229050279331,266,206.50684931506851,207.26857654431512,267,199.03947368421052,203.87917042380522,245,202.12793733681463,251,198.52054794520549,194.97835137385513,247,193.8126050420168,252,188.04166666666666,191.77284595300262,249,182.46478873239437,194.39573459715641,183.16137931034484,175.24242424242425],"text":["game_year: 1980<br />avg_points: 217.0562<br />game_era: Modern Era","game_year: 1980<br />avg_points: 280.0000<br />game_era: Modern Era","game_year: 1980<br />avg_points: 207.8750<br />game_era: Modern Era","game_year: 1981<br />avg_points: 215.9564<br />game_era: Modern Era","game_year: 1981<br />avg_points: 243.0000<br />game_era: Modern Era","game_year: 1981<br />avg_points: 200.6226<br />game_era: Modern Era","game_year: 1982<br />avg_points: 218.3229<br />game_era: Modern Era","game_year: 1982<br />avg_points: 238.0000<br />game_era: Modern Era","game_year: 1982<br />avg_points: 211.0426<br />game_era: Modern Era","game_year: 1983<br />avg_points: 218.4937<br />game_era: Modern Era","game_year: 1983<br />avg_points: 255.0000<br />game_era: Modern Era","game_year: 1983<br />avg_points: 214.7907<br />game_era: Modern Era","game_year: 1984<br />avg_points: 219.8384<br />game_era: Modern Era","game_year: 1984<br />avg_points: 299.0000<br />game_era: Modern Era","game_year: 1984<br />avg_points: 215.2405<br />game_era: Modern Era","game_year: 1985<br />avg_points: 222.0095<br />game_era: Modern Era","game_year: 1985<br />avg_points: 269.0000<br />game_era: Modern Era","game_year: 1985<br />avg_points: 229.3824<br />game_era: Modern Era","game_year: 1986<br />avg_points: 219.1449<br />game_era: Modern Era","game_year: 1986<br />avg_points: 271.0000<br />game_era: Modern Era","game_year: 1986<br />avg_points: 221.4265<br />game_era: Modern Era","game_year: 1987<br />avg_points: 219.4725<br />game_era: Modern Era","game_year: 1987<br />avg_points: 303.0000<br />game_era: Modern Era","game_year: 1987<br />avg_points: 220.8169<br />game_era: Modern Era","game_year: 1988<br />avg_points: 217.0589<br />game_era: Modern Era","game_year: 1988<br />avg_points: 271.0000<br />game_era: Modern Era","game_year: 1988<br />avg_points: 208.6375<br />game_era: Modern Era","game_year: 1989<br />avg_points: 218.7562<br />game_era: Modern Era","game_year: 1989<br />avg_points: 210.7193<br />game_era: Modern Era","game_year: 1989<br />avg_points: 277.0000<br />game_era: Modern Era","game_year: 1989<br />avg_points: 209.7258<br />game_era: Modern Era","game_year: 1990<br />avg_points: 215.1950<br />game_era: Modern Era","game_year: 1990<br />avg_points: 243.0000<br />game_era: Modern Era","game_year: 1990<br />avg_points: 211.0417<br />game_era: Modern Era","game_year: 1991<br />avg_points: 210.8620<br />game_era: Modern Era","game_year: 1991<br />avg_points: 230.0000<br />game_era: Modern Era","game_year: 1991<br />avg_points: 208.3088<br />game_era: Modern Era","game_year: 1992<br />avg_points: 211.2123<br />game_era: Modern Era","game_year: 1992<br />avg_points: 266.0000<br />game_era: Modern Era","game_year: 1992<br />avg_points: 206.5068<br />game_era: Modern Era","game_year: 1993<br />avg_points: 207.2686<br />game_era: Modern Era","game_year: 1993<br />avg_points: 267.0000<br />game_era: Modern Era","game_year: 1993<br />avg_points: 199.0395<br />game_era: Modern Era","game_year: 1994<br />avg_points: 203.8792<br />game_era: Modern Era","game_year: 1994<br />avg_points: 245.0000<br />game_era: Modern Era","game_year: 1995<br />avg_points: 202.1279<br />game_era: Modern Era","game_year: 1995<br />avg_points: 251.0000<br />game_era: Modern Era","game_year: 1995<br />avg_points: 198.5205<br />game_era: Modern Era","game_year: 1996<br />avg_points: 194.9784<br />game_era: Modern Era","game_year: 1996<br />avg_points: 247.0000<br />game_era: Modern Era","game_year: 1997<br />avg_points: 193.8126<br />game_era: Modern Era","game_year: 1997<br />avg_points: 252.0000<br />game_era: Modern Era","game_year: 1997<br />avg_points: 188.0417<br />game_era: Modern Era","game_year: 1998<br />avg_points: 191.7728<br />game_era: Modern Era","game_year: 1998<br />avg_points: 249.0000<br />game_era: Modern Era","game_year: 1998<br />avg_points: 182.4648<br />game_era: Modern Era","game_year: 1999<br />avg_points: 194.3957<br />game_era: Modern Era","game_year: 1999<br />avg_points: 183.1614<br />game_era: Modern Era","game_year: 1999<br />avg_points: 175.2424<br />game_era: Modern Era"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(49,104,142,0.6)","dash":"solid"},"hoveron":"points","name":"Modern Era","legendgroup":"Modern Era","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2000,2000,2001,2001,2001,2002,2002,2003,2003,2003,2004,2004,2004,2005,2005,2005,2005,2006,2006,2006,2007,2007,2007,2007,2008,2008,2008,2008,2009,2009,2009,2009,2009,2010,2010,2010,2010,2011,2011,2011,2011,2012,2012,2012,2012,2013,2013,2013,2013,2014,2014,2014,2014,2015,2015,2015,2015,2016,2016,2016,2016,2017,2017,2017,2017,2018,2018,2018,2019,2019,2019,2019],"y":[192.24212271973465,263,190.53384094754654,221,187.22535211267606,190.20082987551868,255,189.10999160369437,300,192.04545454545453,189.4618025751073,268,176.0609756097561,187.43243243243242,194.54200323101776,240,194.16666666666666,194.96666666666667,195.59105431309905,242,194.00943396226415,197.64634146341464,285,188.48101265822785,191.29090909090908,199.73113964686999,262,189.7093023255814,198.88135593220338,201.71635883905014,199.21141649048627,265,193.35294117647058,194.78991596638656,200.48184019370461,280,195.01219512195121,186.19999999999999,199.07960199004975,291,188.03703703703704,190.37068965517241,192.61670235546038,301,185.60714285714286,191.08695652173913,199.93776824034336,281,190.35294117647058,196.59322033898306,202.36787148594377,318,199.08988764044943,197.95412844036699,200.46607431340871,321,201.09876543209876,204.94059405940595,208.11307137129108,369,199.65116279069767,206.34615384615384,211.77129337539432,374,212.08860759493672,217.04943273905997,293,208.89024390243901,224.07184750733137,220.68787276341948,342,215.40243902439025],"text":["game_year: 2000<br />avg_points: 192.2421<br />game_era: Analytics Era","game_year: 2000<br />avg_points: 263.0000<br />game_era: Analytics Era","game_year: 2001<br />avg_points: 190.5338<br />game_era: Analytics Era","game_year: 2001<br />avg_points: 221.0000<br />game_era: Analytics Era","game_year: 2001<br />avg_points: 187.2254<br />game_era: Analytics Era","game_year: 2002<br />avg_points: 190.2008<br />game_era: Analytics Era","game_year: 2002<br />avg_points: 255.0000<br />game_era: Analytics Era","game_year: 2003<br />avg_points: 189.1100<br />game_era: Analytics Era","game_year: 2003<br />avg_points: 300.0000<br />game_era: Analytics Era","game_year: 2003<br />avg_points: 192.0455<br />game_era: Analytics Era","game_year: 2004<br />avg_points: 189.4618<br />game_era: Analytics Era","game_year: 2004<br />avg_points: 268.0000<br />game_era: Analytics Era","game_year: 2004<br />avg_points: 176.0610<br />game_era: Analytics Era","game_year: 2005<br />avg_points: 187.4324<br />game_era: Analytics Era","game_year: 2005<br />avg_points: 194.5420<br />game_era: Analytics Era","game_year: 2005<br />avg_points: 240.0000<br />game_era: Analytics Era","game_year: 2005<br />avg_points: 194.1667<br />game_era: Analytics Era","game_year: 2006<br />avg_points: 194.9667<br />game_era: Analytics Era","game_year: 2006<br />avg_points: 195.5911<br />game_era: Analytics Era","game_year: 2006<br />avg_points: 242.0000<br />game_era: Analytics Era","game_year: 2007<br />avg_points: 194.0094<br />game_era: Analytics Era","game_year: 2007<br />avg_points: 197.6463<br />game_era: Analytics Era","game_year: 2007<br />avg_points: 285.0000<br />game_era: Analytics Era","game_year: 2007<br />avg_points: 188.4810<br />game_era: Analytics Era","game_year: 2008<br />avg_points: 191.2909<br />game_era: Analytics Era","game_year: 2008<br />avg_points: 199.7311<br />game_era: Analytics Era","game_year: 2008<br />avg_points: 262.0000<br />game_era: Analytics Era","game_year: 2008<br />avg_points: 189.7093<br />game_era: Analytics Era","game_year: 2009<br />avg_points: 198.8814<br />game_era: Analytics Era","game_year: 2009<br />avg_points: 201.7164<br />game_era: Analytics Era","game_year: 2009<br />avg_points: 199.2114<br />game_era: Analytics Era","game_year: 2009<br />avg_points: 265.0000<br />game_era: Analytics Era","game_year: 2009<br />avg_points: 193.3529<br />game_era: Analytics Era","game_year: 2010<br />avg_points: 194.7899<br />game_era: Analytics Era","game_year: 2010<br />avg_points: 200.4818<br />game_era: Analytics Era","game_year: 2010<br />avg_points: 280.0000<br />game_era: Analytics Era","game_year: 2010<br />avg_points: 195.0122<br />game_era: Analytics Era","game_year: 2011<br />avg_points: 186.2000<br />game_era: Analytics Era","game_year: 2011<br />avg_points: 199.0796<br />game_era: Analytics Era","game_year: 2011<br />avg_points: 291.0000<br />game_era: Analytics Era","game_year: 2011<br />avg_points: 188.0370<br />game_era: Analytics Era","game_year: 2012<br />avg_points: 190.3707<br />game_era: Analytics Era","game_year: 2012<br />avg_points: 192.6167<br />game_era: Analytics Era","game_year: 2012<br />avg_points: 301.0000<br />game_era: Analytics Era","game_year: 2012<br />avg_points: 185.6071<br />game_era: Analytics Era","game_year: 2013<br />avg_points: 191.0870<br />game_era: Analytics Era","game_year: 2013<br />avg_points: 199.9378<br />game_era: Analytics Era","game_year: 2013<br />avg_points: 281.0000<br />game_era: Analytics Era","game_year: 2013<br />avg_points: 190.3529<br />game_era: Analytics Era","game_year: 2014<br />avg_points: 196.5932<br />game_era: Analytics Era","game_year: 2014<br />avg_points: 202.3679<br />game_era: Analytics Era","game_year: 2014<br />avg_points: 318.0000<br />game_era: Analytics Era","game_year: 2014<br />avg_points: 199.0899<br />game_era: Analytics Era","game_year: 2015<br />avg_points: 197.9541<br />game_era: Analytics Era","game_year: 2015<br />avg_points: 200.4661<br />game_era: Analytics Era","game_year: 2015<br />avg_points: 321.0000<br />game_era: Analytics Era","game_year: 2015<br />avg_points: 201.0988<br />game_era: Analytics Era","game_year: 2016<br />avg_points: 204.9406<br />game_era: Analytics Era","game_year: 2016<br />avg_points: 208.1131<br />game_era: Analytics Era","game_year: 2016<br />avg_points: 369.0000<br />game_era: Analytics Era","game_year: 2016<br />avg_points: 199.6512<br />game_era: Analytics Era","game_year: 2017<br />avg_points: 206.3462<br />game_era: Analytics Era","game_year: 2017<br />avg_points: 211.7713<br />game_era: Analytics Era","game_year: 2017<br />avg_points: 374.0000<br />game_era: Analytics Era","game_year: 2017<br />avg_points: 212.0886<br />game_era: Analytics Era","game_year: 2018<br />avg_points: 217.0494<br />game_era: Analytics Era","game_year: 2018<br />avg_points: 293.0000<br />game_era: Analytics Era","game_year: 2018<br />avg_points: 208.8902<br />game_era: Analytics Era","game_year: 2019<br />avg_points: 224.0718<br />game_era: Analytics Era","game_year: 2019<br />avg_points: 220.6879<br />game_era: Analytics Era","game_year: 2019<br />avg_points: 342.0000<br />game_era: Analytics Era","game_year: 2019<br />avg_points: 215.4024<br />game_era: Analytics Era"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(53,183,121,0.6)","dash":"solid"},"hoveron":"points","name":"Analytics Era","legendgroup":"Analytics Era","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2020,2020,2020,2020,2021,2021,2021,2021,2022,2022,2022,2022,2023,2023,2023],"y":[217.81632653061226,226.07383627608345,312,219.12048192771084,215.81818181818181,221.40454545454546,320,220.63529411764705,220.07142857142858,226.04163330664531,323,212.59770114942529,231.00584795321637,359,219.17857142857142],"text":["game_year: 2020<br />avg_points: 217.8163<br />game_era: Current Era","game_year: 2020<br />avg_points: 226.0738<br />game_era: Current Era","game_year: 2020<br />avg_points: 312.0000<br />game_era: Current Era","game_year: 2020<br />avg_points: 219.1205<br />game_era: Current Era","game_year: 2021<br />avg_points: 215.8182<br />game_era: Current Era","game_year: 2021<br />avg_points: 221.4045<br />game_era: Current Era","game_year: 2021<br />avg_points: 320.0000<br />game_era: Current Era","game_year: 2021<br />avg_points: 220.6353<br />game_era: Current Era","game_year: 2022<br />avg_points: 220.0714<br />game_era: Current Era","game_year: 2022<br />avg_points: 226.0416<br />game_era: Current Era","game_year: 2022<br />avg_points: 323.0000<br />game_era: Current Era","game_year: 2022<br />avg_points: 212.5977<br />game_era: Current Era","game_year: 2023<br />avg_points: 231.0058<br />game_era: Current Era","game_year: 2023<br />avg_points: 359.0000<br />game_era: Current Era","game_year: 2023<br />avg_points: 219.1786<br />game_era: Current Era"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,0.6)","dash":"solid"},"hoveron":"points","name":"Current Era","legendgroup":"Current Era","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1946,1947,1947,1948,1948,1949,1949,1949,1950,1950,1951,1951,1951,1952,1952,1952,1953,1953,1953,1954,1954,1954,1955,1955,1955,1956,1956,1956,1957,1957,1957,1958,1958,1959,1959,1959,1960,1960,1960,1961,1962,1962,1962,1963,1963,1963,1964,1964,1964,1965,1965,1966,1966,1966,1967,1967,1967,1968,1968,1968,1969,1969,1969,1970,1970,1970,1971,1971,1971,1972,1972,1972,1973,1973,1973,1974,1974,1974,1975,1975,1975,1976,1976,1977,1977,1977,1978,1978,1978,1979,1979,1979,1979],"y":[129.5078125,140.65579710144928,141.21052631578948,152.3097014925373,144.28571428571428,161.70422535211267,159.42561983471074,157.44999999999999,161.5553235908142,161.23333333333332,167.62686567164178,205,167,169.58579881656806,199,172.24000000000001,160.91691394658753,154,163.17391304347825,169.0268456375839,191,162,190.11929824561403,191,194.95238095238096,197.90819672131147,202,199.85714285714286,207.18181818181819,206,219,211.65853658536585,248,221.46913580246914,225.66666666666666,232,234.75757575757575,240,218.12,284,230.15757575757576,280,225.17241379310346,226.32478632478632,223,230.89655172413794,222.37669376693768,218,211.66666666666666,225.1927374301676,247,231.61421319796955,231,227.25925925925927,231.65517241379311,255,231.61290322580646,229.56439393939394,268,224.05000000000001,224.59150326797385,231.17216117216117,235,235.40531561461793,277,223.19999999999999,217.91999999999999,215,207.02500000000001,217.93804034582132,222,213.70270270270271,214.75817923186344,188,205,207.73235294117646,257,196.26829268292684,206.47775175644028,210,201,232,207.16,215.98659517426273,249,210.81132075471697,218.84848484848484,258,214.0392156862745,220.7869822485207,217.65573770491804,263,209.43396226415095],"text":["game_year: 1946<br />avg_points: 129.5078<br />game_era: Pre-Three Point<br />games_count:  128","game_year: 1947<br />avg_points: 140.6558<br />game_era: Pre-Three Point<br />games_count:  276","game_year: 1947<br />avg_points: 141.2105<br />game_era: Pre-Three Point<br />games_count:   19","game_year: 1948<br />avg_points: 152.3097<br />game_era: Pre-Three Point<br />games_count:  268","game_year: 1948<br />avg_points: 144.2857<br />game_era: Pre-Three Point<br />games_count:   21","game_year: 1949<br />avg_points: 161.7042<br />game_era: Pre-Three Point<br />games_count:  213","game_year: 1949<br />avg_points: 159.4256<br />game_era: Pre-Three Point<br />games_count:  242","game_year: 1949<br />avg_points: 157.4500<br />game_era: Pre-Three Point<br />games_count:   20","game_year: 1950<br />avg_points: 161.5553<br />game_era: Pre-Three Point<br />games_count:  479","game_year: 1950<br />avg_points: 161.2333<br />game_era: Pre-Three Point<br />games_count:   30","game_year: 1951<br />avg_points: 167.6269<br />game_era: Pre-Three Point<br />games_count:  335","game_year: 1951<br />avg_points: 205.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1951<br />avg_points: 167.0000<br />game_era: Pre-Three Point<br />games_count:   26","game_year: 1952<br />avg_points: 169.5858<br />game_era: Pre-Three Point<br />games_count:  338","game_year: 1952<br />avg_points: 199.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1952<br />avg_points: 172.2400<br />game_era: Pre-Three Point<br />games_count:   25","game_year: 1953<br />avg_points: 160.9169<br />game_era: Pre-Three Point<br />games_count:  337","game_year: 1953<br />avg_points: 154.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1953<br />avg_points: 163.1739<br />game_era: Pre-Three Point<br />games_count:   23","game_year: 1954<br />avg_points: 169.0268<br />game_era: Pre-Three Point<br />games_count:  298","game_year: 1954<br />avg_points: 191.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1954<br />avg_points: 162.0000<br />game_era: Pre-Three Point<br />games_count:   23","game_year: 1955<br />avg_points: 190.1193<br />game_era: Pre-Three Point<br />games_count:  285","game_year: 1955<br />avg_points: 191.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1955<br />avg_points: 194.9524<br />game_era: Pre-Three Point<br />games_count:   21","game_year: 1956<br />avg_points: 197.9082<br />game_era: Pre-Three Point<br />games_count:  305","game_year: 1956<br />avg_points: 202.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1956<br />avg_points: 199.8571<br />game_era: Pre-Three Point<br />games_count:   21","game_year: 1957<br />avg_points: 207.1818<br />game_era: Pre-Three Point<br />games_count:  297","game_year: 1957<br />avg_points: 206.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1957<br />avg_points: 219.0000<br />game_era: Pre-Three Point<br />games_count:   17","game_year: 1958<br />avg_points: 211.6585<br />game_era: Pre-Three Point<br />games_count:  287","game_year: 1958<br />avg_points: 248.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1959<br />avg_points: 221.4691<br />game_era: Pre-Three Point<br />games_count:  162","game_year: 1959<br />avg_points: 225.6667<br />game_era: Pre-Three Point<br />games_count:  135","game_year: 1959<br />avg_points: 232.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1960<br />avg_points: 234.7576<br />game_era: Pre-Three Point<br />games_count:  165","game_year: 1960<br />avg_points: 240.0000<br />game_era: Pre-Three Point<br />games_count:    2","game_year: 1960<br />avg_points: 218.1200<br />game_era: Pre-Three Point<br />games_count:   25","game_year: 1961<br />avg_points: 284.0000<br />game_era: Pre-Three Point<br />games_count:    1","game_year: 1962<br />avg_points: 230.1576<br />game_era: Pre-Three Point<br />games_count:  165","game_year: 1962<br />avg_points: 280.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1962<br />avg_points: 225.1724<br />game_era: Pre-Three Point<br />games_count:   29","game_year: 1963<br />avg_points: 226.3248<br />game_era: Pre-Three Point<br />games_count:  351","game_year: 1963<br />avg_points: 223.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1963<br />avg_points: 230.8966<br />game_era: Pre-Three Point<br />games_count:   29","game_year: 1964<br />avg_points: 222.3767<br />game_era: Pre-Three Point<br />games_count:  369","game_year: 1964<br />avg_points: 218.0000<br />game_era: Pre-Three Point<br />games_count:    1","game_year: 1964<br />avg_points: 211.6667<br />game_era: Pre-Three Point<br />games_count:   27","game_year: 1965<br />avg_points: 225.1927<br />game_era: Pre-Three Point<br />games_count:  358","game_year: 1965<br />avg_points: 247.0000<br />game_era: Pre-Three Point<br />games_count:    2","game_year: 1966<br />avg_points: 231.6142<br />game_era: Pre-Three Point<br />games_count:  197","game_year: 1966<br />avg_points: 231.0000<br />game_era: Pre-Three Point<br />games_count:    1","game_year: 1966<br />avg_points: 227.2593<br />game_era: Pre-Three Point<br />games_count:   27","game_year: 1967<br />avg_points: 231.6552<br />game_era: Pre-Three Point<br />games_count:  232","game_year: 1967<br />avg_points: 255.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1967<br />avg_points: 231.6129<br />game_era: Pre-Three Point<br />games_count:   31","game_year: 1968<br />avg_points: 229.5644<br />game_era: Pre-Three Point<br />games_count:  528","game_year: 1968<br />avg_points: 268.0000<br />game_era: Pre-Three Point<br />games_count:    2","game_year: 1968<br />avg_points: 224.0500<br />game_era: Pre-Three Point<br />games_count:   40","game_year: 1969<br />avg_points: 224.5915<br />game_era: Pre-Three Point<br />games_count:  306","game_year: 1969<br />avg_points: 231.1722<br />game_era: Pre-Three Point<br />games_count:  273","game_year: 1969<br />avg_points: 235.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1970<br />avg_points: 235.4053<br />game_era: Pre-Three Point<br />games_count:  301","game_year: 1970<br />avg_points: 277.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1970<br />avg_points: 223.2000<br />game_era: Pre-Three Point<br />games_count:   40","game_year: 1971<br />avg_points: 217.9200<br />game_era: Pre-Three Point<br />games_count:  325","game_year: 1971<br />avg_points: 215.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1971<br />avg_points: 207.0250<br />game_era: Pre-Three Point<br />games_count:   40","game_year: 1972<br />avg_points: 217.9380<br />game_era: Pre-Three Point<br />games_count:  694","game_year: 1972<br />avg_points: 222.0000<br />game_era: Pre-Three Point<br />games_count:    1","game_year: 1972<br />avg_points: 213.7027<br />game_era: Pre-Three Point<br />games_count:   37","game_year: 1973<br />avg_points: 214.7582<br />game_era: Pre-Three Point<br />games_count:  703","game_year: 1973<br />avg_points: 188.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1973<br />avg_points: 205.0000<br />game_era: Pre-Three Point<br />games_count:   41","game_year: 1974<br />avg_points: 207.7324<br />game_era: Pre-Three Point<br />games_count:  680","game_year: 1974<br />avg_points: 257.0000<br />game_era: Pre-Three Point<br />games_count:    1","game_year: 1974<br />avg_points: 196.2683<br />game_era: Pre-Three Point<br />games_count:   41","game_year: 1975<br />avg_points: 206.4778<br />game_era: Pre-Three Point<br />games_count:  427","game_year: 1975<br />avg_points: 210.0000<br />game_era: Pre-Three Point<br />games_count:    2","game_year: 1975<br />avg_points: 201.0000<br />game_era: Pre-Three Point<br />games_count:   47","game_year: 1976<br />avg_points: 232.0000<br />game_era: Pre-Three Point<br />games_count:    1","game_year: 1976<br />avg_points: 207.1600<br />game_era: Pre-Three Point<br />games_count:   50","game_year: 1977<br />avg_points: 215.9866<br />game_era: Pre-Three Point<br />games_count:  373","game_year: 1977<br />avg_points: 249.0000<br />game_era: Pre-Three Point<br />games_count:    4","game_year: 1977<br />avg_points: 210.8113<br />game_era: Pre-Three Point<br />games_count:   53","game_year: 1978<br />avg_points: 218.8485<br />game_era: Pre-Three Point<br />games_count:  924","game_year: 1978<br />avg_points: 258.0000<br />game_era: Pre-Three Point<br />games_count:    2","game_year: 1978<br />avg_points: 214.0392<br />game_era: Pre-Three Point<br />games_count:   51","game_year: 1979<br />avg_points: 220.7870<br />game_era: Pre-Three Point<br />games_count:  507","game_year: 1979<br />avg_points: 217.6557<br />game_era: Pre-Three Point<br />games_count:  427","game_year: 1979<br />avg_points: 263.0000<br />game_era: Pre-Three Point<br />games_count:    1","game_year: 1979<br />avg_points: 209.4340<br />game_era: Pre-Three Point<br />games_count:   53"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","opacity":0.80000000000000004,"size":[9.2081554207222585,11.767831078768317,5.823261998497796,11.650780009669345,5.9338128127772274,10.793372190688185,11.257721639217426,5.8792650918635179,14.311316790247897,6.3736305222943503,12.583150718786323,4.6138786501197133,6.1880916941791266,12.622599563834696,4.6138786501197133,6.1394288165837958,12.609469531344409,4.6138786501197133,6.0389609946413456,12.081216096509849,4.6138786501197133,6.0389609946413456,11.89749641539747,4.6138786501197133,5.9338128127772274,12.178477690288716,4.6138786501197133,5.9338128127772274,12.067228405803087,4.6138786501197133,5.7063788671543252,11.926030664559022,4.6138786501197133,9.891778116988462,9.3557566786762223,4.6138786501197133,9.9484617154647275,4.26124038607992,6.1394288165837958,3.7795275590551185,9.9484617154647275,4.6138786501197133,6.3285122463701162,12.791549346760652,4.6138786501197133,6.3285122463701162,13.020381803173642,3.7795275590551185,6.2357906640025274,12.881223414010988,4.26124038607992,10.523507137402342,3.7795275590551185,6.2357906640025274,11.100928669728699,4.6138786501197133,6.4179773750657994,14.837958711282784,4.26124038607992,6.7878231996278382,12.192280411401908,11.724139027207704,4.6138786501197133,12.123038469701063,4.6138786501197133,6.7878231996278382,12.450358445501548,4.6138786501197133,6.7878231996278382,16.460566265332965,3.7795275590551185,6.669804521203929,16.542645042632515,4.6138786501197133,6.8261469820892877,16.331821421215679,3.7795275590551185,6.8261469820892877,13.721968281977054,4.26124038607992,7.0466629090414665,3.7795275590551185,7.1515173482287304,13.070468100890709,4.6138786501197133,7.2532081548283935,18.414404041136169,4.26124038607992,7.1857516247929141,14.615389654266306,13.721968281977054,3.7795275590551185,7.2532081548283935],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(68,1,84,1)"}},"hoveron":"points","name":"Pre-Three Point","legendgroup":"Pre-Three Point","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1980,1980,1980,1981,1981,1981,1982,1982,1982,1983,1983,1983,1984,1984,1984,1985,1985,1985,1986,1986,1986,1987,1987,1987,1988,1988,1988,1989,1989,1989,1989,1990,1990,1990,1991,1991,1991,1992,1992,1992,1993,1993,1993,1994,1994,1995,1995,1995,1996,1996,1997,1997,1997,1998,1998,1998,1999,1999,1999],"y":[217.0561555075594,280,207.875,215.95636363636365,243,200.62264150943398,218.32288401253919,238,211.04255319148936,218.4936575052854,255,214.7906976744186,219.83840503672613,299,215.24050632911391,222.00950369588173,269,229.38235294117646,219.14489571899011,271,221.4264705882353,219.47252747252747,303,220.81690140845072,217.0589430894309,271,208.63749999999999,218.75620437956204,210.7192513368984,277,209.7258064516129,215.19496855345912,243,211.04166666666666,210.86200716845877,230,208.30882352941177,211.21229050279331,266,206.50684931506851,207.26857654431512,267,199.03947368421052,203.87917042380522,245,202.12793733681463,251,198.52054794520549,194.97835137385513,247,193.8126050420168,252,188.04166666666666,191.77284595300262,249,182.46478873239437,194.39573459715641,183.16137931034484,175.24242424242425],"text":["game_year: 1980<br />avg_points: 217.0562<br />game_era: Modern Era<br />games_count:  926","game_year: 1980<br />avg_points: 280.0000<br />game_era: Modern Era<br />games_count:    2","game_year: 1980<br />avg_points: 207.8750<br />game_era: Modern Era<br />games_count:   48","game_year: 1981<br />avg_points: 215.9564<br />game_era: Modern Era<br />games_count:  825","game_year: 1981<br />avg_points: 243.0000<br />game_era: Modern Era<br />games_count:    1","game_year: 1981<br />avg_points: 200.6226<br />game_era: Modern Era<br />games_count:   53","game_year: 1982<br />avg_points: 218.3229<br />game_era: Modern Era<br />games_count:  957","game_year: 1982<br />avg_points: 238.0000<br />game_era: Modern Era<br />games_count:    2","game_year: 1982<br />avg_points: 211.0426<br />game_era: Modern Era<br />games_count:   47","game_year: 1983<br />avg_points: 218.4937<br />game_era: Modern Era<br />games_count:  946","game_year: 1983<br />avg_points: 255.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1983<br />avg_points: 214.7907<br />game_era: Modern Era<br />games_count:   43","game_year: 1984<br />avg_points: 219.8384<br />game_era: Modern Era<br />games_count:  953","game_year: 1984<br />avg_points: 299.0000<br />game_era: Modern Era<br />games_count:    2","game_year: 1984<br />avg_points: 215.2405<br />game_era: Modern Era<br />games_count:   79","game_year: 1985<br />avg_points: 222.0095<br />game_era: Modern Era<br />games_count:  947","game_year: 1985<br />avg_points: 269.0000<br />game_era: Modern Era<br />games_count:    1","game_year: 1985<br />avg_points: 229.3824<br />game_era: Modern Era<br />games_count:   68","game_year: 1986<br />avg_points: 219.1449<br />game_era: Modern Era<br />games_count:  911","game_year: 1986<br />avg_points: 271.0000<br />game_era: Modern Era<br />games_count:    2","game_year: 1986<br />avg_points: 221.4265<br />game_era: Modern Era<br />games_count:   68","game_year: 1987<br />avg_points: 219.4725<br />game_era: Modern Era<br />games_count:  910","game_year: 1987<br />avg_points: 303.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1987<br />avg_points: 220.8169<br />game_era: Modern Era<br />games_count:   71","game_year: 1988<br />avg_points: 217.0589<br />game_era: Modern Era<br />games_count:  984","game_year: 1988<br />avg_points: 271.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1988<br />avg_points: 208.6375<br />game_era: Modern Era<br />games_count:   80","game_year: 1989<br />avg_points: 218.7562<br />game_era: Modern Era<br />games_count:  685","game_year: 1989<br />avg_points: 210.7193<br />game_era: Modern Era<br />games_count:  374","game_year: 1989<br />avg_points: 277.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1989<br />avg_points: 209.7258<br />game_era: Modern Era<br />games_count:   62","game_year: 1990<br />avg_points: 215.1950<br />game_era: Modern Era<br />games_count: 1113","game_year: 1990<br />avg_points: 243.0000<br />game_era: Modern Era<br />games_count:    2","game_year: 1990<br />avg_points: 211.0417<br />game_era: Modern Era<br />games_count:   72","game_year: 1991<br />avg_points: 210.8620<br />game_era: Modern Era<br />games_count: 1116","game_year: 1991<br />avg_points: 230.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1991<br />avg_points: 208.3088<br />game_era: Modern Era<br />games_count:   68","game_year: 1992<br />avg_points: 211.2123<br />game_era: Modern Era<br />games_count: 1074","game_year: 1992<br />avg_points: 266.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1992<br />avg_points: 206.5068<br />game_era: Modern Era<br />games_count:   73","game_year: 1993<br />avg_points: 207.2686<br />game_era: Modern Era<br />games_count: 1117","game_year: 1993<br />avg_points: 267.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1993<br />avg_points: 199.0395<br />game_era: Modern Era<br />games_count:   76","game_year: 1994<br />avg_points: 203.8792<br />game_era: Modern Era<br />games_count: 1109","game_year: 1994<br />avg_points: 245.0000<br />game_era: Modern Era<br />games_count:    1","game_year: 1995<br />avg_points: 202.1279<br />game_era: Modern Era<br />games_count: 1149","game_year: 1995<br />avg_points: 251.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1995<br />avg_points: 198.5205<br />game_era: Modern Era<br />games_count:   73","game_year: 1996<br />avg_points: 194.9784<br />game_era: Modern Era<br />games_count: 1201","game_year: 1996<br />avg_points: 247.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1997<br />avg_points: 193.8126<br />game_era: Modern Era<br />games_count: 1190","game_year: 1997<br />avg_points: 252.0000<br />game_era: Modern Era<br />games_count:    4","game_year: 1997<br />avg_points: 188.0417<br />game_era: Modern Era<br />games_count:   72","game_year: 1998<br />avg_points: 191.7728<br />game_era: Modern Era<br />games_count:  766","game_year: 1998<br />avg_points: 249.0000<br />game_era: Modern Era<br />games_count:    1","game_year: 1998<br />avg_points: 182.4648<br />game_era: Modern Era<br />games_count:   71","game_year: 1999<br />avg_points: 194.3957<br />game_era: Modern Era<br />games_count:  422","game_year: 1999<br />avg_points: 183.1614<br />game_era: Modern Era<br />games_count:  725","game_year: 1999<br />avg_points: 175.2424<br />game_era: Modern Era<br />games_count:   66"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(49,104,142,1)","opacity":0.80000000000000004,"size":[18.430251232007574,4.26124038607992,7.0819843177198916,17.607287034887296,3.7795275590551185,7.2532081548283935,18.67372672586286,4.26124038607992,7.0466629090414665,18.587790424618184,4.6138786501197133,6.9013834820998561,18.642534651486166,4.26124038607992,8.0339000535809166,18.595623412664267,3.7795275590551185,7.7225169829890916,18.310976056207981,4.26124038607992,7.7225169829890916,18.302989549148453,4.6138786501197133,7.8098262254588704,18.882588325303217,4.6138786501197133,8.0610848189662718,16.377952755905511,13.082947543106384,4.6138786501197133,7.5418250102056534,19.84304334685487,4.26124038607992,7.8385119872262932,19.864697163633508,4.6138786501197133,7.7225169829890916,19.558839863582303,4.6138786501197133,7.8669964379404735,19.871908627615877,4.6138786501197133,7.9512830143780926,19.814126103266037,3.7795275590551185,20.100993191246975,4.6138786501197133,7.8669964379404735,20.466549380347011,4.6138786501197133,20.389891117368624,4.6138786501197133,7.8385119872262932,17.103046032265311,3.7795275590551185,7.8098262254588704,13.663448405066349,16.74109410594458,7.663220531190623],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(49,104,142,1)"}},"hoveron":"points","name":"Modern Era","legendgroup":"Modern Era","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2000,2000,2001,2001,2001,2002,2002,2003,2003,2003,2004,2004,2004,2005,2005,2005,2005,2006,2006,2006,2007,2007,2007,2007,2008,2008,2008,2008,2009,2009,2009,2009,2009,2010,2010,2010,2010,2011,2011,2011,2011,2012,2012,2012,2012,2013,2013,2013,2013,2014,2014,2014,2014,2015,2015,2015,2015,2016,2016,2016,2016,2017,2017,2017,2017,2018,2018,2018,2019,2019,2019,2019],"y":[192.24212271973465,263,190.53384094754654,221,187.22535211267606,190.20082987551868,255,189.10999160369437,300,192.04545454545453,189.4618025751073,268,176.0609756097561,187.43243243243242,194.54200323101776,240,194.16666666666666,194.96666666666667,195.59105431309905,242,194.00943396226415,197.64634146341464,285,188.48101265822785,191.29090909090908,199.73113964686999,262,189.7093023255814,198.88135593220338,201.71635883905014,199.21141649048627,265,193.35294117647058,194.78991596638656,200.48184019370461,280,195.01219512195121,186.19999999999999,199.07960199004975,291,188.03703703703704,190.37068965517241,192.61670235546038,301,185.60714285714286,191.08695652173913,199.93776824034336,281,190.35294117647058,196.59322033898306,202.36787148594377,318,199.08988764044943,197.95412844036699,200.46607431340871,321,201.09876543209876,204.94059405940595,208.11307137129108,369,199.65116279069767,206.34615384615384,211.77129337539432,374,212.08860759493672,217.04943273905997,293,208.89024390243901,224.07184750733137,220.68787276341948,342,215.40243902439025],"text":["game_year: 2000<br />avg_points: 192.2421<br />game_era: Analytics Era<br />games_count: 1206","game_year: 2000<br />avg_points: 263.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2001<br />avg_points: 190.5338<br />game_era: Analytics Era<br />games_count: 1182","game_year: 2001<br />avg_points: 221.0000<br />game_era: Analytics Era<br />games_count:    1","game_year: 2001<br />avg_points: 187.2254<br />game_era: Analytics Era<br />games_count:   71","game_year: 2002<br />avg_points: 190.2008<br />game_era: Analytics Era<br />games_count: 1205","game_year: 2002<br />avg_points: 255.0000<br />game_era: Analytics Era<br />games_count:    2","game_year: 2003<br />avg_points: 189.1100<br />game_era: Analytics Era<br />games_count: 1191","game_year: 2003<br />avg_points: 300.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2003<br />avg_points: 192.0455<br />game_era: Analytics Era<br />games_count:   88","game_year: 2004<br />avg_points: 189.4618<br />game_era: Analytics Era<br />games_count: 1165","game_year: 2004<br />avg_points: 268.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2004<br />avg_points: 176.0610<br />game_era: Analytics Era<br />games_count:   82","game_year: 2005<br />avg_points: 187.4324<br />game_era: Analytics Era<br />games_count:  111","game_year: 2005<br />avg_points: 194.5420<br />game_era: Analytics Era<br />games_count: 1238","game_year: 2005<br />avg_points: 240.0000<br />game_era: Analytics Era<br />games_count:    2","game_year: 2005<br />avg_points: 194.1667<br />game_era: Analytics Era<br />games_count:   84","game_year: 2006<br />avg_points: 194.9667<br />game_era: Analytics Era<br />games_count:  120","game_year: 2006<br />avg_points: 195.5911<br />game_era: Analytics Era<br />games_count: 1252","game_year: 2006<br />avg_points: 242.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2007<br />avg_points: 194.0094<br />game_era: Analytics Era<br />games_count:  106","game_year: 2007<br />avg_points: 197.6463<br />game_era: Analytics Era<br />games_count: 1230","game_year: 2007<br />avg_points: 285.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2007<br />avg_points: 188.4810<br />game_era: Analytics Era<br />games_count:   79","game_year: 2008<br />avg_points: 191.2909<br />game_era: Analytics Era<br />games_count:  110","game_year: 2008<br />avg_points: 199.7311<br />game_era: Analytics Era<br />games_count: 1246","game_year: 2008<br />avg_points: 262.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2008<br />avg_points: 189.7093<br />game_era: Analytics Era<br />games_count:   86","game_year: 2009<br />avg_points: 198.8814<br />game_era: Analytics Era<br />games_count:  118","game_year: 2009<br />avg_points: 201.7164<br />game_era: Analytics Era<br />games_count:  758","game_year: 2009<br />avg_points: 199.2114<br />game_era: Analytics Era<br />games_count:  473","game_year: 2009<br />avg_points: 265.0000<br />game_era: Analytics Era<br />games_count:    2","game_year: 2009<br />avg_points: 193.3529<br />game_era: Analytics Era<br />games_count:   85","game_year: 2010<br />avg_points: 194.7899<br />game_era: Analytics Era<br />games_count:  119","game_year: 2010<br />avg_points: 200.4818<br />game_era: Analytics Era<br />games_count: 1239","game_year: 2010<br />avg_points: 280.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2010<br />avg_points: 195.0122<br />game_era: Analytics Era<br />games_count:   82","game_year: 2011<br />avg_points: 186.2000<br />game_era: Analytics Era<br />games_count:   30","game_year: 2011<br />avg_points: 199.0796<br />game_era: Analytics Era<br />games_count:  804","game_year: 2011<br />avg_points: 291.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2011<br />avg_points: 188.0370<br />game_era: Analytics Era<br />games_count:   81","game_year: 2012<br />avg_points: 190.3707<br />game_era: Analytics Era<br />games_count:  116","game_year: 2012<br />avg_points: 192.6167<br />game_era: Analytics Era<br />games_count:  934","game_year: 2012<br />avg_points: 301.0000<br />game_era: Analytics Era<br />games_count:    1","game_year: 2012<br />avg_points: 185.6071<br />game_era: Analytics Era<br />games_count:   84","game_year: 2013<br />avg_points: 191.0870<br />game_era: Analytics Era<br />games_count:  115","game_year: 2013<br />avg_points: 199.9378<br />game_era: Analytics Era<br />games_count:  466","game_year: 2013<br />avg_points: 281.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2013<br />avg_points: 190.3529<br />game_era: Analytics Era<br />games_count:   85","game_year: 2014<br />avg_points: 196.5932<br />game_era: Analytics Era<br />games_count:  118","game_year: 2014<br />avg_points: 202.3679<br />game_era: Analytics Era<br />games_count: 1245","game_year: 2014<br />avg_points: 318.0000<br />game_era: Analytics Era<br />games_count:    1","game_year: 2014<br />avg_points: 199.0899<br />game_era: Analytics Era<br />games_count:   89","game_year: 2015<br />avg_points: 197.9541<br />game_era: Analytics Era<br />games_count:  109","game_year: 2015<br />avg_points: 200.4661<br />game_era: Analytics Era<br />games_count: 1238","game_year: 2015<br />avg_points: 321.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2015<br />avg_points: 201.0988<br />game_era: Analytics Era<br />games_count:   81","game_year: 2016<br />avg_points: 204.9406<br />game_era: Analytics Era<br />games_count:  101","game_year: 2016<br />avg_points: 208.1131<br />game_era: Analytics Era<br />games_count: 1247","game_year: 2016<br />avg_points: 369.0000<br />game_era: Analytics Era<br />games_count:    2","game_year: 2016<br />avg_points: 199.6512<br />game_era: Analytics Era<br />games_count:   86","game_year: 2017<br />avg_points: 206.3462<br />game_era: Analytics Era<br />games_count:   78","game_year: 2017<br />avg_points: 211.7713<br />game_era: Analytics Era<br />games_count: 1268","game_year: 2017<br />avg_points: 374.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2017<br />avg_points: 212.0886<br />game_era: Analytics Era<br />games_count:   79","game_year: 2018<br />avg_points: 217.0494<br />game_era: Analytics Era<br />games_count: 1234","game_year: 2018<br />avg_points: 293.0000<br />game_era: Analytics Era<br />games_count:    2","game_year: 2018<br />avg_points: 208.8902<br />game_era: Analytics Era<br />games_count:   82","game_year: 2019<br />avg_points: 224.0718<br />game_era: Analytics Era<br />games_count:  682","game_year: 2019<br />avg_points: 220.6879<br />game_era: Analytics Era<br />games_count:  503","game_year: 2019<br />avg_points: 342.0000<br />game_era: Analytics Era<br />games_count:    4","game_year: 2019<br />avg_points: 215.4024<br />game_era: Analytics Era<br />games_count:   82"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(53,183,121,1)","opacity":0.80000000000000004,"size":[20.501277871234546,4.6138786501197133,20.333916691777212,3.7795275590551185,7.8098262254588704,20.494337945510377,4.26124038607992,20.396874663423777,4.6138786501197133,8.2726456914504496,20.214338064392368,4.6138786501197133,8.1149430022783342,8.8317743116618157,20.721854596092271,4.26124038607992,8.1681402738864008,9.03439411099599,20.81745897393067,4.6138786501197133,8.715615180909472,20.666980518224488,4.6138786501197133,8.0339000535809166,8.8087571224678562,20.776551516550789,4.6138786501197133,8.2207003834585155,8.9900484527150315,17.033197485690962,14.245008958586956,4.26124038607992,8.1944985451997656,9.0122682588210381,20.728701364218612,4.6138786501197133,8.1149430022783342,6.3736305222943503,17.429946597287675,4.6138786501197133,8.0880980664993363,8.9453221240592331,18.493469319269181,3.7795275590551185,8.1681402738864008,8.9228131082061477,14.167114872281676,4.6138786501197133,8.1944985451997656,8.9900484527150315,20.769724031255247,3.7795275590551185,8.2983944302275745,8.7856341054426856,20.721854596092271,4.6138786501197133,8.0880980664993363,8.5966558293031348,20.783376260434522,4.26124038607992,8.2207003834585155,8.0065404611477344,20.926068401496984,4.6138786501197133,8.0339000535809166,20.6944398094642,4.26124038607992,8.1149430022783342,16.350294269859763,14.572475180328633,4.6138786501197133,8.1149430022783342],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(53,183,121,1)"}},"hoveron":"points","name":"Analytics Era","legendgroup":"Analytics Era","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2020,2020,2020,2020,2021,2021,2021,2021,2022,2022,2022,2022,2023,2023,2023],"y":[217.81632653061226,226.07383627608345,312,219.12048192771084,215.81818181818181,221.40454545454546,320,220.63529411764705,220.07142857142858,226.04163330664531,323,212.59770114942529,231.00584795321637,359,219.17857142857142],"text":["game_year: 2020<br />avg_points: 217.8163<br />game_era: Current Era<br />games_count:   49","game_year: 2020<br />avg_points: 226.0738<br />game_era: Current Era<br />games_count:  623","game_year: 2020<br />avg_points: 312.0000<br />game_era: Current Era<br />games_count:    1","game_year: 2020<br />avg_points: 219.1205<br />game_era: Current Era<br />games_count:   83","game_year: 2021<br />avg_points: 215.8182<br />game_era: Current Era<br />games_count:   66","game_year: 2021<br />avg_points: 221.4045<br />game_era: Current Era<br />games_count: 1540","game_year: 2021<br />avg_points: 320.0000<br />game_era: Current Era<br />games_count:    2","game_year: 2021<br />avg_points: 220.6353<br />game_era: Current Era<br />games_count:   85","game_year: 2022<br />avg_points: 220.0714<br />game_era: Current Era<br />games_count:   70","game_year: 2022<br />avg_points: 226.0416<br />game_era: Current Era<br />games_count: 1249","game_year: 2022<br />avg_points: 323.0000<br />game_era: Current Era<br />games_count:    1","game_year: 2022<br />avg_points: 212.5977<br />game_era: Current Era<br />games_count:   87","game_year: 2023<br />avg_points: 231.0058<br />game_era: Current Era<br />games_count:  684","game_year: 2023<br />avg_points: 359.0000<br />game_era: Current Era<br />games_count:    4","game_year: 2023<br />avg_points: 219.1786<br />game_era: Current Era<br />games_count:   84"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","opacity":0.80000000000000004,"size":[7.1169319233134969,15.793410698239587,3.7795275590551185,8.1416227337456686,7.663220531190623,22.677165354330711,4.26124038607992,8.1944985451997656,7.7809348230930624,20.797017537158311,3.7795275590551185,8.2467485412698416,16.368740012299153,4.6138786501197133,8.1681402738864008],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(253,231,37,1)"}},"hoveron":"points","name":"Current Era","legendgroup":"Current Era","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":40.840182648401829,"r":7.3059360730593621,"b":37.260273972602747,"l":43.105022831050235},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Evolution of NBA Scoring (1946–Present)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1942.1500000000001,2026.8499999999999],"tickmode":"array","ticktext":["1960","1980","2000","2020"],"tickvals":[1960,1980,2000,2020],"categoryorder":"array","categoryarray":["1960","1980","2000","2020"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Year","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[117.283203125,386.224609375],"tickmode":"array","ticktext":["200","300"],"tickvals":[200,300],"categoryorder":"array","categoryarray":["200","300"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Average Total Points","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"games_count<br />game_era","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"59bc689bfd2":{"x":{},"y":{},"colour":{},"type":"scatter"},"59bc1a4b4632":{"x":{},"y":{},"colour":{},"size":{}}},"cur_data":"59bc689bfd2","visdat":{"59bc689bfd2":["function (y) ","x"],"59bc1a4b4632":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There were 7 warnings in `mutate()`.
+The first warning was:
+ℹ In argument: `value_numeric = case_when(...)`.
+Caused by warning:
+! NAs introduced by coercion
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 6 remaining warnings.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
